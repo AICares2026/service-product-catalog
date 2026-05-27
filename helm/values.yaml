@@ -1,0 +1,24 @@
+service:
+  name: product-catalog
+image:
+  repository: 952893849914.dkr.ecr.us-east-1.amazonaws.com/aicares-application/product-catalog
+containerPort: 3550
+resources:
+  limits:
+    memory: "20Mi"
+  requests:
+    memory: "10Mi"
+    cpu: "50m"
+env:
+  - name: PRODUCT_CATALOG_PORT
+    value: "3550"
+  - name: FLAGD_HOST
+    value: "flagd"
+  - name: FLAGD_PORT
+    value: "8013"
+  - name: OTEL_SERVICE_NAME
+    value: "product-catalog"
+  - name: OTEL_EXPORTER_OTLP_ENDPOINT
+    value: "http://otel-collector:4317"
+nodeSelector:
+  eks.amazonaws.com/nodegroup: graviton-workers
