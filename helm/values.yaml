@@ -27,3 +27,4 @@ env:
     value: "postgres://astronomy_user:astronomy_password@postgresql/astronomy_db?sslmode=disable"
 nodeSelector:
   eks.amazonaws.com/nodegroup: graviton-workers
+
