@@ -1,7 +1,10 @@
 service:
   name: service-product-catalog
+  namespace: aicares
 image:
   repository: 952893849914.dkr.ecr.us-east-1.amazonaws.com/aicares-application/product-catalog
+  tag: latest
+  pullPolicy: Always
 containerPort: 3550
 resources:
   limits:
@@ -20,5 +23,7 @@ env:
     value: "product-catalog"
   - name: OTEL_EXPORTER_OTLP_ENDPOINT
     value: "http://otel-collector:4317"
+  - name: DB_CONNECTION_STRING
+    value: "postgres://astronomy_user:astronomy_password@postgresql/astronomy_db?sslmode=disable"
 nodeSelector:
   eks.amazonaws.com/nodegroup: graviton-workers
